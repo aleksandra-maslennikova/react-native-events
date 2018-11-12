@@ -1,15 +1,15 @@
+import firebase from 'firebase';
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+export const appName = "react-adv-lana-mouse";
 
-var config = {
+var firebaseConfig = {
     apiKey: "AIzaSyC2hcbKTY1L2qhaGSLXja8n72CD_a-KfYw",
-    authDomain: "react-adv-lana-mouse.firebaseapp.com",
-    databaseURL: "https://react-adv-lana-mouse.firebaseio.com",
-    projectId: "react-adv-lana-mouse",
-    storageBucket: "react-adv-lana-mouse.appspot.com",
+    authDomain: `${appName}.firebaseapp.com`,
+    databaseURL: `https://${appName}.firebaseio.com`,
+    projectId: appName,
+    storageBucket: `${appName}.appspot.com`,
     messagingSenderId: "900318040575"
   };
 
-  firebase.initializeApp(config);
+
+firebase.initializeApp(firebaseConfig);

@@ -2,16 +2,17 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import { autorun } from 'mobx';
 import BasicStore from './basic-store';
 
+
 class NavigationStore extends BasicStore {
     ref = null
 
     setNavRef = ref => {
-        this.ref = ref;
+        this.ref = ref
         this.onReady()
     }
 
     onReady = () => {
-        let firstRun = true;
+        let firstRun = true
 
         setTimeout(() => {
             autorun(() => {
@@ -20,7 +21,6 @@ class NavigationStore extends BasicStore {
                     : 'auth'
 
                 if (!firstRun) {
-                    console.log('heeeeeeeeee');
                     this.reset(screen)
                 }
                 firstRun = false
@@ -40,6 +40,7 @@ class NavigationStore extends BasicStore {
     }))
 
     goBack = () => this.ref.dispatch(NavigationActions.back())
+
 }
 
 export default NavigationStore

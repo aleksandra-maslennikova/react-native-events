@@ -18,14 +18,10 @@ class EventListScreen extends Component {
         return (<View><ActivityIndicator size='large' /></View>)
     }
 
-    handleEventPress = (uid) => {
-        this.props.navigation.goTo('event', { uid })
-    }
-
     render() {
-        const {events} = this.props;
+        const { events } = this.props;
         if (events.loading) return this.getLoader();
-        return <EventList onEventPress={this.handleEventPress} events={events.list} />
+        return <EventList events={events.list} />
     }
 }
 

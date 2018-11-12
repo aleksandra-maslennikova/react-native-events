@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Button, Platform } from 'react-native';
+import { View, Text, TextInput, Platform, TouchableOpacity } from 'react-native';
 import { observer, inject } from 'mobx-react';
 
 @inject('auth')
 @observer
 class Auth extends Component {
-      render() {
+    render() {
         const { auth } = this.props;
-        console.log('ptkjhkjhkjhkj', auth.isValidEmail);
         return (
             <View style={styles.container}>
                 <View>
@@ -29,7 +28,7 @@ class Auth extends Component {
                         secureTextEntry
                     />
                 </View>
-                <Button title="Sign In" onPress={this.props.auth.signIn} />
+                <TouchableOpacity onPress={auth.signIn} ><Text>SignIn</Text></TouchableOpacity>
             </View>
         )
     }

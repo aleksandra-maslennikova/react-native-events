@@ -8,7 +8,7 @@ class PeopleStore extends EntitiesStore {
 
         return Object.entries(grouped).map(([letter, list]) => ({
             title: `${letter}, ${list.length} people`,
-            data: list.map(person => ({ key: person.id, person }))
+            data: list.map(person => ({ key: person.uid, person }))
         }));
     }
 

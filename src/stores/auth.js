@@ -1,15 +1,19 @@
-import { observable, action } from 'mobx'
-import firebase from 'firebase/app'
-import BasicStore from './basic-store'
+import { observable, action } from 'mobx';
+import firebase from 'firebase';
+import BasicStore from './basic-store';
 
 class AuthStore extends BasicStore {
     @observable email = ''
     @observable password = ''
     @observable user = null
 
-    @action setEmail = email => this.email = email
+    @action setEmail = email => {
+        this.email = email
+    }
     @action setPassword = password => this.password = password
-    @action setUser = user => this.user = user
+    @action setUser = user => {
+        this.user = user
+    }
 
     constructor(...args) {
         super(...args)

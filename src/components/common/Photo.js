@@ -10,7 +10,7 @@ class Photo extends Component {
     @observable errorMessage = null;
     @observable type = Camera.Constants.Type.back;
 
-    async componentWillMount() {
+    async componentDidMount() {
         const res = await Permissions.askAsync(Permissions.CAMERA);
         const { status } = res;
         this.setPermission(status);
@@ -19,6 +19,27 @@ class Photo extends Component {
     @action setPermission(status) {
         if (status === 'granted') this.permitted = true;
         else this.errorMessage = 'permission denied';
+    }
+
+    @action setType = (type) => this.type = type;
+
+
+    getCameraRef = (ref) => {
+        this.camera = ref;
+        setTimeout(() => this.setType(Camera.Constants.Type.front), 0);
+    }
+
+    flip = () => {
+        this.setType(this.type === Camera.Constants.Type.back
+            ? Camera.Constants.Type.front
+            : Camera.Constants.Type.back
+        )
+    }
+
+    takePhoto = async () => {
+        const { getPhoto } = this.props
+        const photo = await this.camera.takePictureAsync()
+        getPhoto(photo)
     }
 
     render() {
@@ -41,26 +62,6 @@ class Photo extends Component {
                 </Camera>
             </View>
         )
-    }
-
-    getCameraRef = (ref) => {
-        this.camera = ref;
-        setTimeout(() => this.setType(Camera.Constants.Type.front), 0);
-    }
-
-    @action setType = (type) => this.type = type;
-
-    flip = () => {
-        this.setType(this.type === Camera.Constants.Type.back
-            ? Camera.Constants.Type.front
-            : Camera.Constants.Type.back
-        )
-    }
-
-    takePhoto = async () => {
-        const { getPhoto } = this.props
-        const photo = await this.camera.takePictureAsync()
-        getPhoto(photo)
     }
 }
 

@@ -1,6 +1,6 @@
 import {observable, computed, action} from 'mobx';
 import BasicStore from './basic-store';
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 import {entitiesFromFB} from './utils';
 
 class EntitiesStore extends BasicStore {
@@ -17,11 +17,12 @@ class EntitiesStore extends BasicStore {
         return Object.keys(this.entities).length;
     }
 
-    checkAndLoadAll() {
+    /* checkAndLoadAll() {
+
         if (!this.loading && !this.loaded) {
             this.loadAll();
         }
-    }
+    } */
 }
 
 export function loadAllHelper(refName) {

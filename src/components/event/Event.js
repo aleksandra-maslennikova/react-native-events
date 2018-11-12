@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, Image, Button, ScrollView, StyleSheet } from 'react-native';
 import ConfirmModal from '../common/ConfirmModal';
-import { eventList } from '../../mocks';
 
 export class Event extends Component {
-    static defaultProps = {
-        event: eventList[0]
-    }
-
     state = {
         modalVisible: false
     }
@@ -17,7 +12,6 @@ export class Event extends Component {
 
     render() {
         const { event } = this.props;
-        console.log('eventProps', this.props);
         return (
             <ScrollView>
                 <View style={styles.container}>

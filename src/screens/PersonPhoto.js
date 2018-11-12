@@ -4,7 +4,7 @@ import PersonPhoto from '../components/people/PersonPhoto';
 
 class PersonPhotoScreen extends Component {
     render() {
-        return <PersonPhoto uid={this.props.navigation.state.params.uid} />
+        return <PersonPhoto id={this.props.navigation.state.params.id} />
     }
 
 }
